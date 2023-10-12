@@ -1,4 +1,4 @@
-# Password Spray walkthrough
+# Custom IOC of 5 or more failed login attempts walkthrough
 
 ## Cited Resources:
 [Microsoft Security Blog: Protecting your organization against password spray attacks](https://www.microsoft.com/en-us/security/blog/2020/04/23/protecting-organization-password-spray-attacks/) <br />
