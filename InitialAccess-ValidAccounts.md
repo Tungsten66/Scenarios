@@ -12,7 +12,7 @@ The Azure Active Directory solution is installed from the Sentinel Content hub.
 Walkthrough to find accounts that have been created and deleted within 24 hours
 
 1. Go to [Microsoft Entra admin center](https://entra.microsoft.com/)
-2. Expand Users, click on All Users, and click on Audit logs
+2. Expand Users, click on All Users, and click on Audit logs <br />
 ![image](https://github.com/Tungsten66/Scenarios/assets/40893034/ff976f54-fe19-449c-99ea-7a5628d8546b)
 3. Click on the Date, Click on Custom time interval, enter the start and end to equal the last 24 hours and click Apply
 ![image](https://github.com/Tungsten66/Scenarios/assets/40893034/dc7b5b9e-7fe4-48ce-8d45-9e9b056f6773)
