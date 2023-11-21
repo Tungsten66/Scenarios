@@ -1,4 +1,4 @@
-# Initial Access– Valid Accounts
+# Initial Access – Valid Accounts
 
 ## Cited Resources:
 [Microsoft: Short-lived accounts](https://learn.microsoft.com/en-us/entra/architecture/security-operations-user-accounts#short-lived-accounts) <br />
