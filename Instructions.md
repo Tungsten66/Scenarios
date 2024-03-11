@@ -98,3 +98,51 @@ nmap configuration <br />
 **Profile:** select Intense scan, no ping <br />
 
 Run this 3 or more times <br />
+
+# DDoS
+
+Building a VM with a public ip to perform Azure DDoS Protection simulation testing
+
+## Reference Articles
+https://learn.microsoft.com/en-us/azure/ddos-protection/test-through-simulations <br />
+https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-cli  <br />
+https://learn.microsoft.com/en-us/azure/ddos-protection/manage-ddos-protection-cli
+
+```console
+# Variables
+resourcegroup="rg-lab-demo"
+ddosplanname="DDosLabDemo"
+location="eastus"
+vnetname="vnet-lab-demo"
+vmname="vm-lab-demo"
+username="azureuser"
+sentinelworkspace="/subscriptions/{subscription-id}/resourceGroups/{log-analytics-resource-group}/providers/Microsoft.OperationalInsights/workspaces/{log-analytics-workspace-name}"
+
+# Create a Resource Group
+az group create --name $resourcegroup --location $location
+
+# Create a Virtual Machine with Public IP
+az vm create --resource-group $resourcegroup --name $vmname --image Win2022AzureEditionCore public-ip-address "pip-lab-demo" --admin-username $username --vnet-name $vnetname
+
+# Install web server
+az vm run-command invoke -g $resourcegroup -n $vmname --command-id RunPowerShellScript --scripts "Install-WindowsFeature -name Web-Server -IncludeManagementTools"
+
+# Open port 80 for web traffic
+az vm open-port --port 80 --resource-group $resourcegroup --name $vmname
+
+# Create a DDoS Protection plan
+az network ddos-protection create --resource-group $resourcegroup --name $ddosplanname
+
+# Enable DDoS protection for an existing virtual network
+az network vnet update --resource-group $resourcegroup --name $vnetname --ddos-protection-plan $ddosplanname --ddos-protection true
+
+# Creating variable for the public ip address resourece id
+pipresourceid=$(az network public-ip list --query "[?name=='pip-lab-demo'].{ResourceId:id}" --output table)
+
+# Create diagnostic settings
+az monitor diagnostic-settings create --name "Sentinel-DDoS" --resource $pipresourceid --logs '[{"category": "DDoSProtectionNotifications", "enabled": true}, {"category": "DDOSMitigationFlowLogs", "enabled": true}, {"category": "DDOSMitigationReports", "enabled": true}]' --workspace $sentinelworkspace
+
+# List Public IP address
+publicip=$(az vm show -d -g $resourcegroup -n $vmname --query publicIps -o tsv)
+echo -e "\e[32mUse this public ip for DDoS testing: $publicip\e[0m"
+```
