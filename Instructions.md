@@ -99,7 +99,7 @@ nmap configuration <br />
 
 Run this 3 or more times <br />
 
-# DDoS
+# Impact-NetworkDenialOfService
 
 Building a VM with a public ip to perform Azure DDoS Protection simulation testing
 
