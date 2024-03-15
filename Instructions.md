@@ -122,7 +122,7 @@ sentinelworkspace="/subscriptions/{subscription-id}/resourceGroups/{log-analytic
 az group create --name $resourcegroup --location $location
 
 # Create a Virtual Machine with Public IP
-az vm create --resource-group $resourcegroup --name $vmname --image Win2022AzureEditionCore public-ip-address "pip-lab-demo" --admin-username $username --vnet-name $vnetname
+az vm create --resource-group $resourcegroup --name $vmname --image Win2022AzureEditionCore --public-ip-address "pip-lab-demo" --admin-username $username --vnet-name $vnetname
 
 # Install web server
 az vm run-command invoke -g $resourcegroup -n $vmname --command-id RunPowerShellScript --scripts "Install-WindowsFeature -name Web-Server -IncludeManagementTools"
