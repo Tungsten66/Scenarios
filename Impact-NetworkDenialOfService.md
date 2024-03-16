@@ -10,8 +10,8 @@ A simulated DDoS attack using a Microsoft approved testing partner was ran again
 ## Validate:
 
 Verify the following is configured
-- DDoS Network Protection is enabled on the public IP address - _pip-lab-demo_
-- Azure DDoS Protection solution is installed from the Sentinel Content hub
+- DDoS Network Protection Plan is created and the public IP address is a protected resource - _pip-lab-demo_
+- _Azure DDoS Protection_ solution is installed from the Microsoft Sentinel Content hub
 - The public ip address diagnostic settings have been configured to send DDoSProtectionNotifications, DDoSMitigationFlowLogs, and DDoSMitigationReports to the Sentinel Log Analytics workspace.
 
 
