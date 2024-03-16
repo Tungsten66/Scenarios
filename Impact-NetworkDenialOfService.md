@@ -12,6 +12,7 @@ A simulated DDoS attack using a Microsoft approved testing partner was ran again
 Verify the following is configured
 - DDoS Network Protection Plan is created and the public IP address is a protected resource - _pip-lab-demo_
 - _Azure DDoS Protection_ solution is installed from the Microsoft Sentinel Content hub
+   - Analytic rules are enabled
 - The public ip address diagnostic settings have been configured to send DDoSProtectionNotifications, DDoSMitigationFlowLogs, and DDoSMitigationReports to the Sentinel Log Analytics workspace.
 
 
@@ -19,52 +20,40 @@ Verify the following is configured
 
 The SOC is responding to a DDoS Attack incident in Sentinel.  Currently no services impacted.
 
-- [Azure DDoS Solution for Microsoft Sentinel](https://techcommunity.microsoft.com/t5/azure-network-security-blog/azure-ddos-solution-for-microsoft-sentinel/ba-p/3732013)
-- [View Azure DDoS Protection alerts in Microsoft Defender for Cloud](https://learn.microsoft.com/en-us/azure/ddos-protection/ddos-view-alerts-defender-for-cloud)
+### Questions:
+- Where can you review DDoS attack incidents? 
+- When did the attack start?
+- What are the source IP addresses of the attack?
+- Country and city source of attack?
+- What is the public IP address and resource affected?
+- How many incidents do you see in the last 24 hours?
+
+
+
+> [!Note]
+> [Azure DDoS Solution for Microsoft Sentinel](https://techcommunity.microsoft.com/t5/azure-network-security-blog/azure-ddos-solution-for-microsoft-sentinel/ba-p/3732013)
+> [View Azure DDoS Protection alerts in Microsoft Defender for Cloud](https://learn.microsoft.com/en-us/azure/ddos-protection/ddos-view-alerts-defender-for-cloud)
+
+
+
 
 ## Scenario 2:
 
-Service is starting to be impacted.
+During a DDoS attack the performance of the protected resource is severely degraded, or the resource isn't available.
 
 When to engage [Azure DDoS Rapid Response](https://learn.microsoft.com/en-us/azure/ddos-protection/ddos-rapid-response#when-to-engage-drr)
 
-## Discovery
 
-DDoS Protection Notifications
-
-```kusto
-AzureDiagnostics
-| where Category == "DDoSProtectionNotifications"
-```
-
-DDoS Mitigation Reports
-
-```kusto
-AzureDiagnostics
-| where Category == "DDoSMitigationReports"
-```
-
-DDoS Mitigation Flow Logs
-
-```kusto
-AzureDiagnostics
-| where Category == "DDoSMitigationFlowLogs"
-```
 
 
 
 ## Post Condition:
 
-Reflect on the following questions:
-- What is your organications current process for DDoS attacks?
+### Questions:
+- What is your organizations current mitigation and process for DDoS attacks?
+- What can be improved in this current configuration?
 
 > [!Note]
-> Hint: [Azure DDoS Protection fundamental best practices](https://learn.microsoft.com/en-us/azure/ddos-protection/fundamental-best-practices)
-
-Add description here
-
-1. Under Sentinel > Analytics - Create a Scheduled query rule
-2.
-3. Review new incident
+> [Azure DDoS Protection fundamental best practices](https://learn.microsoft.com/en-us/azure/ddos-protection/fundamental-best-practices)
 
 
