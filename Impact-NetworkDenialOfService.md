@@ -30,7 +30,7 @@ The SOC is responding to a DDoS Attack incident in Sentinel.  Currently no servi
 
 
 
-> [!Note]
+> [!Tip]
 > [Azure DDoS Solution for Microsoft Sentinel](https://techcommunity.microsoft.com/t5/azure-network-security-blog/azure-ddos-solution-for-microsoft-sentinel/ba-p/3732013)
 > [View Azure DDoS Protection alerts in Microsoft Defender for Cloud](https://learn.microsoft.com/en-us/azure/ddos-protection/ddos-view-alerts-defender-for-cloud)
 
@@ -53,7 +53,7 @@ When to engage [Azure DDoS Rapid Response](https://learn.microsoft.com/en-us/azu
 - What is your organizations current mitigation and process for DDoS attacks?
 - What can be improved in this current configuration?
 
-> [!Note]
+> [!Tip]
 > [Azure DDoS Protection fundamental best practices](https://learn.microsoft.com/en-us/azure/ddos-protection/fundamental-best-practices)
 
 
