@@ -28,7 +28,7 @@ $password = openssl rand -base64 16
   $UserPrincipalName="SOCUser$i@$domain"
   
   #Create the users
-  az ad user create --display-name $UserDisplayName --password $password --user-principal-name $UserPrincipalName
+  az ad user create --display-name $UserDisplayName --password $password --user-principal-name $UserPrincipalName --force-change-password-next-sign-in false
  
   $UserId = az ad user show --id $UserPrincipalName --query id -o tsv
 
