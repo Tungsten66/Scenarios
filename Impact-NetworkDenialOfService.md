@@ -28,10 +28,29 @@ The SOC is responding to a DDoS Attack incident in Sentinel.  Currently no servi
 - What is the public IP address and resource affected?
 - How many incidents do you see in the last 24 hours?
 
+#### Discovery
+```kusto
+# DDoS Protection Notifications
+AzureDiagnostics
+| where Category == "DDoSProtectionNotifications"
+
+# DDoS Mitigation Reports
+AzureDiagnostics
+| where Category == "DDoSMitigationReports"
+
+# DDoS Mitigation Flow Logs
+AzureDiagnostics
+| where Category == "DDoSMitigationFlowLogs"
+
+# Finding the public ip
+AzureDiagnostics
+| where Category == "DDoSProtectionNotifications"
+| project publicIpAddress_s
+````
 
 
 > [!Tip]
-> [Azure DDoS Solution for Microsoft Sentinel](https://techcommunity.microsoft.com/t5/azure-network-security-blog/azure-ddos-solution-for-microsoft-sentinel/ba-p/3732013)
+> [Azure DDoS Solution for Microsoft Sentinel](https://techcommunity.microsoft.com/t5/azure-network-security-blog/azure-ddos-solution-for-microsoft-sentinel/ba-p/3732013)  <br />
 > [View Azure DDoS Protection alerts in Microsoft Defender for Cloud](https://learn.microsoft.com/en-us/azure/ddos-protection/ddos-view-alerts-defender-for-cloud)
 
 
