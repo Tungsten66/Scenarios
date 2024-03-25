@@ -27,6 +27,7 @@ The SOC is responding to a DDoS Attack incident in Sentinel.  Currently no servi
 - Country and city source of attack?
 - What is the public IP address and resource affected?
 - How many incidents do you see in the last 24 hours?
+- What is the attack vector?
 
 #### Discovery
 ```kusto
